@@ -1,0 +1,170 @@
+version: 2
+
+models:
+  - name: bronze_trans_carts
+    tests: 
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 208
+  - name: bronze_trans_users
+    tests: 
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 208
+  - name: bronze_trans_products
+    tests: 
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 194   
+
+  - name: silver_users
+    columns:
+
+      - name: user_id
+        tests:
+          - dbt_expectations.expect_column_values_to_be_unique
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: email
+        tests: 
+          - dbt_expectations.expect_column_values_to_be_unique
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: age
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  
+              max_value: 200
+  - name: silver_products
+    columns:
+      - name: product_id
+        tests:
+        - dbt_expectations.expect_column_values_to_not_be_null
+        - dbt_expectations.expect_column_values_to_be_unique
+
+      - name: product_price
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 100000
+
+      - name: product_rating
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 5
+
+      - name: availability_status
+        tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['In Stock', 'Low Stock', 'Out of Stock']
+  - name: silver_carts
+    columns:
+      - name: cart_id
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: user_id
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: product_id
+        tests: 
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: cart_total_quantity
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 1
+  - name: dim_users
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: ref("silver_users")
+    columns:
+      - name: user_id
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: full_name
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: email
+        tests: 
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: age
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 1
+              max_value: 200
+  - name: dim_products
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: ref("silver_products")
+    columns:
+      - name: product_id
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+          - dbt_expectations.expect_column_values_to_be_unique
+
+      - name: product_title
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: category
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+      
+      - name: product_rating
+        tests: 
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  
+              max_value: 5 
+
+      - name: stock
+        tests: 
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+  - name: fct_order_items
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: ref("silver_carts")
+    columns:
+      - name: order_id
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+      
+      - name: user_id 
+        tests: 
+          - dbt_expectations.expect_column_values_to_not_be_null
+      
+      - name: product_id
+        tests: 
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: quantity 
+        tests: 
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+  - name: fct_orders
+    columns:
+      - name: order_id
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+          - dbt_expectations.expect_column_values_to_be_unique
+
+      - name: user_id
+        tests: 
+          - dbt_expectations.expect_column_values_to_not_be_null
+      
+      - name: distinct_products
+        tests: 
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+
+      - name: total_items
+        tests: 
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1

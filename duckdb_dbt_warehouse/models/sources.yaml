@@ -1,0 +1,28 @@
+version: 2 
+
+sources:
+  - name: external_s3
+    tables:
+      - name: users
+        meta:
+          external_location: "s3://lakehouse-dummyjson/bronze/users/load_date=*/*.parquet"
+
+      - name: products
+        meta:
+          external_location: "s3://lakehouse-dummyjson/bronze/products/load_date=*/*.parquet"
+
+      - name: carts
+        meta:
+          external_location: "s3://lakehouse-dummyjson/bronze/carts/load_date=*/*.parquet"
+      
+
+  - name: bronze
+    database: ecommerce_warehouse 
+    schema: bronze
+    description: "Raw,transfomred parquet files from s3 used in silver _* sql files"
+    tables:
+      - name: bronze_trans_carts
+      - name: bronze_trans_products
+      - name: bronze_trans_users
+
+ 
