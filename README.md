@@ -15,7 +15,7 @@ For this project, real-time analysis was the main focus as the data provided inf
 ## 🎯 Objectives
 - Build a free and scalable ELT pipeline on local machine
 - Automate and Orchestrate pipeline using Airflow
-- Provide qulity checks trhoughout transfomations and stages
+- Provide qulity checks throughout transfomations and stages
 - Design a star schema data warehouse ready for BI
 - Generate business insights through SQL and dashboards
 
