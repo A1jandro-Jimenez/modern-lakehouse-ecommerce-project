@@ -26,14 +26,25 @@ For this project, real-time analysis was the main focus as the data provided inf
 ---
 
 ## 🏗️ Architecture
+<div align="center">
+<img src="images/ELT_Pipeline.png" width="800">
+</div>
 
+Used Apache Airflow to orchestrate pipeline end-to-end without the need to manually trigger every step. 
+1. **Extract/Ingest:** A Python script is read that extracts data from API as a Json file and converts it into Parquet. It then loads Parquet file into our object storage service (S3).
+2. **Load:** Using DuckDB and dbt as dbt-Duckdb, the raw data from S3 was loaded into our cloud warhouse, MotherDuck.
+3. **Transform** Dbt-Duckdb allowed us to use the medallion architecture in order to ensure clean and consistent data ready to be used for BI or AI. Dbt provided data quality checks trhoughout each step aswell. 
 
 ---
 
 ## 🛠️ Important Links & Tools:
-
-
-
+- [REST API](https://dummyjson.com/) : Fake REST API used to obtain data (users, products, carts)
+- [Docker](https://docs.docker.com/get-started/get-docker/) : Platform used to build, deploy, run, and manage pipeline in standardized units called containers
+- [Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html) : Orchestration tool used to automatically run pipeline end-to-end
+- [Amazon S3](https://aws.amazon.com/s3/) : Object storage service used for storing Parquet files of our API data
+- [Data Build Tool (dbt)](https://www.getdbt.com/) : Open-source software used to transfrom data already in data warehouse via SQL statements
+- [DuckDB](https://duckdb.org/) : Open-source SQL OLAP database management system designed for fast, analytical queries
+- [MotherDuck](https://motherduck.com/) : A serverless cloud data analytics platform built on top of DuckDB
 ---
 
 ## 🔍 Data Quality
