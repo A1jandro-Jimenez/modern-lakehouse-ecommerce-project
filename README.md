@@ -56,18 +56,21 @@ Used Apache Airflow to orchestrate pipeline end-to-end without the need to manua
 
 
 dbt-expectations is an extension package for dbt, inspired by the Great Expectations package for Python. The intent is to allow dbt users to deploy GE-like tests in their data warehouse directly from dbt, vs having to add another integration with their data warehouse.
-Learn more about the different tests that are offered here: [dbt-expectations](https://hub.getdbt.com/metaplane/dbt_expectations/latest/)
-The full list of quality checks for this project can be found in 
+Learn more about the different tests that are offered here: [dbt-expectations](https://hub.getdbt.com/metaplane/dbt_expectations/latest/).
+The full list of quality checks for this project can be found in [project_tests](duckdb_dbt_warehouse/models/schema.yml). 
 
 
 --- 
 
 
-## 📊 Data Analysis/Dashboard 
+## 📊 Dashboard/Data Model
 <div align="center">
 <img src="images/JSON_Ecommerce_dashboard.png" width="800">
 </div>
 
+Connect MotherDuck warehouse to Power BI to create a simple dashboard that includes KPIs and a ohter visuals such as: Revenue by category, Top 10 products, Sales by age band and more, simulating typical visuals and charts one might encouter in a working environment. 
+
+In order to boost performace and make quarying easier for these charts a **star schema** was used. The model consisted of two diminsion tables, users & products, and two fact tables, orders & order items. 
 
 ---
 ## 📂 Project Structure
