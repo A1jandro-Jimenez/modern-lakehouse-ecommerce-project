@@ -72,13 +72,23 @@ Connect MotherDuck warehouse to Power BI to create a simple dashboard that inclu
 
 In order to boost performace and make quarying easier for these charts a **star schema** was used. The model consisted of two diminsion tables, users & products, and two fact tables, orders & order items. 
 
+<div align="center">
+<img src="images/Star_schema_ecommerce.png" width="400">
+</div>
+
 ---
+
+## ➡️ Airflow DAG
+
+
+```
+
+
+
 ## 📂 Project Structure
 ```
 
-```
 
-## 🚀 Key Features
 
 
 ---
@@ -86,10 +96,6 @@ In order to boost performace and make quarying easier for these charts a **star 
 
 ## 🧠 Learnings
 
-
----
-
-## 📎 Future Improvements
 
 ---
 
