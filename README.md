@@ -77,32 +77,12 @@ In order to boost performace and make quarying easier for these charts a **star 
 </div>
 
 ---
-
 ## ➡️ Airflow DAG
 
----
-## 📂 Project Structure
-```
-taxi-dlt-project
-│
-├── Datasets           # Raw datasets used for the project (yellow_tripdata & taxi_zone_lookup)
-├   
-├── Piprline Files/    # Python and SQL scripts for ETL and transformations pipeline
-│   └── bronze         # Scripts for extracting and loading raw data
-│   └── gold           # Scripts for creating analytical models
-│   └── silver         # Scripts for cleaning and transforming data
-├
-├── docs/
-│   └── Genie_Ai.png                 #Screenshot of Genie AI interaction in Databricks
-│   └── expectations-flow-graph      # Chart explaning expectations feature for SDP
-│   └── taxidb_arch.png              # Draw.io file shows the project's architecture
-│   └── taxidb_star_schema.svg       # Dbdiagram.io file for data models (star schema)
-├
-└── README.md
+<div align="center">
+<img src="images/lakehouse_pipeline-graph.png" width="800">
+</div>
 
---- 
-## 🧠 Learnings
 ---
 
-## 👤 Author
-**Alejadnro Jimenez Hernandez**
+
