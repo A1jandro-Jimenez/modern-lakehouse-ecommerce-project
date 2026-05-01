@@ -53,7 +53,7 @@ Used Apache Airflow to orchestrate pipeline end-to-end without the need to manua
 
 --- 
 
-## 📊🤖 Data Analysis/AI Use
+## 📊🤖 Data Analysis/Dashboard 
 
 ---
 ## 📂 Project Structure
