@@ -53,7 +53,12 @@ Used Apache Airflow to orchestrate pipeline end-to-end without the need to manua
 
 --- 
 
-## 📊🤖 Data Analysis/Dashboard 
+
+## 📊 Data Analysis/Dashboard 
+<div align="center">
+<img src="images/JSON_Ecommerce_dashboard.png" width="800">
+</div>
+
 
 ---
 ## 📂 Project Structure
