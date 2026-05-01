@@ -48,7 +48,16 @@ Used Apache Airflow to orchestrate pipeline end-to-end without the need to manua
 ---
 
 ## 🔍 Data Quality
-### Manage data quality with pipeline expectations
+### Manage data quality with dbt-expectations
+
+<div align="center">
+<img src="images/Great_Expectations_Logo.png" width="300">
+</div>
+
+
+dbt-expectations is an extension package for dbt, inspired by the Great Expectations package for Python. The intent is to allow dbt users to deploy GE-like tests in their data warehouse directly from dbt, vs having to add another integration with their data warehouse.
+Learn more about the different tests that are offered here: [dbt-expectations](https://hub.getdbt.com/metaplane/dbt_expectations/latest/)
+The full list of quality checks for this project can be found in 
 
 
 --- 
