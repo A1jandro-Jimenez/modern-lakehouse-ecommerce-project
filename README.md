@@ -114,7 +114,11 @@ Modern_lakehouse_project
 ```
 
 ## 🧠 Learnings
-
+- Learned the basics of Airflow including how to create dags involving tasks with python and dash operaters
+- Create images and run containers in Docker while persisting data to local computer
+- Dbt enviornment and structure in order to build tables for data warehouse
+- Duckdb and MotherDuck to manage database and perform analytics
+- Compared and contrast the benifits of databases, data warehouses, data lakes, and data lakehouses to better understand why a compnay/enterprise would chose one architect over the other. 
 
 ---
 
