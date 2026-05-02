@@ -77,12 +77,46 @@ In order to boost performace and make quarying easier for these charts a **star 
 </div>
 
 ---
+
 ## ➡️ Airflow DAG
 
 <div align="center">
-<img src="images/lakehouse_pipeline-graph.png" width="800">
+<img src="images/lakehouse_pipeline-graph.png" width="1000">
 </div>
+
+Full Airflow dag that shows tasks orders and dependencies. Pipeline is triggered once and all other tasks are run automatically until the last task is finished.
+
+---
+## 📂 Project Structure
+```
+Modern_lakehouse_project
+│
+├── .vscode/      
+|    └── settings.json                     # Setings for vscode dbt extenstion
+|
+├── dags/                                  # Aiflow dags folder containing all the dags created for porject
+│   └── scripts/                           # Python scripts folder for extracting and loading raw data into s3 used for Aiflow to automate process
+│       └── ingest_and_convert.py          # Actual script for ingestion and convertion 
+│   └── ecommerce_dag.py                   # Dag python script use to orchestrate entire pipeline
+├
+├── duckdb_dbt_warehouse/                  # Dbt project folder containing all folders and files of entire dbt project
+│                
+├── images/                                # Folder with all the images used for README.md
+├
+├── .gitignore                             # File instructs Git to intentionally ignore specific
+├── .python-version                        # Simple text file used to specify exactly which version of Python a project should use
+├── Dockerfile                             # A text-based document containing ordered instructions used to automate the creation of Docker container images.
+├── README.md 
+├── docker-compose.yaml                    # Used to coordinate and run multiple containers together as a single application
+├── main.py
+├── pyproject.toml                         # Used to define build requirements, dependencies, and tool settings in a single, human-readable format
+├── requirements.txt                       # Used to list the external libraries (dependencies) and their specific versions required for the project to run. ├── uv.lock                                # Records exact versions and cryptographic hashes of all project dependencie
+```
+
+## 🧠 Learnings
+
 
 ---
 
-
+## 👤 Author
+**Alejandro Jimenez Hernandez**
